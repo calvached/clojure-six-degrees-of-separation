@@ -4,7 +4,6 @@
   (re-find (re-matcher #"\A\w+" tweet))
   )
 
-(defn first-element [sequence default]
-  (if (nil? sequence)
-    default
-    (first sequence)))
+(defn receiver-names [tweet]
+  (re-seq #"@\w+" tweet)
+  )

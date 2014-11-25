@@ -7,15 +7,15 @@
 (facts "Parser"
   (fact "returns the sender name when given a string"
     (sender-name "duncan: @emily, oh what a pity. I'll fill you in next week.") => "duncan"
-    (sender-name "diana: \"The spirit of x-mas is godzilla!\" #SpirtOfChristmas @twittertweet") =>"diana"
-    ))
+    (sender-name "diana: \"The spirit of x-mas is godzilla!\" #SpiritOfChristmas @twittertweet") =>"diana"
+    )
 
-  ;; I'm a little unsure how Clojure types map onto the Lisp I'm used to.
-  ;(fact "default value is returned for empty sequences"
-  ;  (first-element [] :default) => :default
-  ;  (first-element '() :default) => :default
-  ;  (first-element nil :default) => :default
-  ;  (first-element (filter even? [1 3 5]) :default) => :default))
+  (fact "returns the names of all the receivers in a message"
+    (receiver-names "christie: 'Every day, men and women, conversing, beholding and beholden.' /cc @alberta, @bob") => ["@alberta", "@bob"]
+    (receiver-names "duncan: hey @farid and @bob") => ["@farid", "@bob"]
+    (receiver-names "bob: @duncan, @christie so I see it is Emerson tonight") => ["@duncan", "@christie"]
+    )
+)
 
 ; {
 ;  sender: @somename
