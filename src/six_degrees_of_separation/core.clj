@@ -7,3 +7,10 @@
 (defn receiver-names [tweet]
   (re-seq #"(?<=@)\w+" tweet)
   )
+
+(defn parse-tweet [tweet]
+  {
+   :sender (sender-name tweet),
+   :receivers (receiver-names tweet)
+   }
+  )

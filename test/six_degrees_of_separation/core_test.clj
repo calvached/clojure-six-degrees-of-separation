@@ -14,14 +14,8 @@
     (receiver-names "bob: @duncan, @christie so I see it is Emerson tonight") => '("duncan", "christie")
     )
 
-  ;(fact ""
-  ;  () => "duncan"
-  ;  () => "diana"
-  ;  )
+  (fact "returns a parsed tweet"
+    (parse-tweet "bob: @duncan, @christie so I see it is Emerson tonight") =>
+        { :sender "bob", :receivers '("duncan", "christie") }
+    )
 )
-
-; {
-;  sender: @somename
-;  receivers: [@name, @name, @name]
-;  tweet: some content here...
-; }
